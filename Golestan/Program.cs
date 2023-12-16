@@ -89,29 +89,63 @@ while (true)
                     Console.Write("enter your lastname : ");
                     var adLastName = Console.ReadLine();
 
-                    Admin newAdmin = new Admin() {Name=adname,LastName=adLastName };
+                    Admin newAdmin = new Admin() { Name = adname, LastName = adLastName };
+                    newAdmin.Role = RoleEnum.Admin;
 
                     Console.WriteLine("enter your Email: ");
                     newAdmin.UserName = Console.ReadLine();
-                    
+
                     Console.WriteLine("enter your password");
                     newAdmin.SetPassword(Console.ReadLine(), out string Message);
 
-                   // authenticationService.Register(newAdmin);
+                    authenticationService.Register(newAdmin);
                     break;
 
                 case 2:
+                    Console.Write("enter your name :");
+                    var teName = Console.ReadLine();
+
+                    Console.Write("enter your lastname : ");
+                    var teLastName = Console.ReadLine();
+
+                    Admin newTeacher = new Admin() { Name = teName, LastName = teLastName };
+                    newTeacher.Role = RoleEnum.Teacher;
+
+                    Console.WriteLine("enter your Email: ");
+                    newTeacher.UserName = Console.ReadLine();
+
+                    Console.WriteLine("enter your password");
+                    newTeacher.SetPassword(Console.ReadLine(), out string Message2);
+
+                    authenticationService.Register(newTeacher);
                     break;
 
                 case 3:
+                    Console.Write("enter your name :");
+                    var stName = Console.ReadLine();
+
+                    Console.Write("enter your lastname : ");
+                    var stLastName = Console.ReadLine();
+
+                    Admin newStudent = new Admin() { Name = stName, LastName = stLastName };
+                    newStudent.Role = RoleEnum.Student;
+
+                    Console.WriteLine("enter your Email: ");
+                    newStudent.UserName = Console.ReadLine();
+
+                    Console.WriteLine("enter your password");
+                    newStudent.SetPassword(Console.ReadLine(), out string Message3);
+
+                    authenticationService.Register(newStudent);
                     break;
             }
-
             break;
 
     }
 }
 
+
+//methods
 void ChangePassword()
 {
     Console.Write("enter your current password : ");

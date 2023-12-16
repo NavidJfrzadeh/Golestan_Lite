@@ -62,6 +62,43 @@ namespace Golestan.Services
 
 
 
+        public void Register(User newUser)
+        {
+            switch (newUser)
+            {
+                case Admin:
 
+                    if (!DataBase.Admins.Any(x => x.Id == newUser.Id))
+                        DataBase.Admins.Add((Admin)newUser);
+
+                    else
+                        Console.WriteLine("This account exists");
+
+                    break;
+
+
+                case Teacher:
+
+                    if (!DataBase.TeachersList.Any(x => x.UserName == newUser.UserName))
+                        DataBase.TeachersList.Add((Teacher)newUser);
+                    else
+                        Console.WriteLine("This account exists");
+
+                    break;
+
+
+                case Student:
+
+                    if (!DataBase.StudentList.Any(x => x.UserName == newUser.UserName))
+                    {
+                        DataBase.StudentList.Add((Student)newUser);
+                    }
+                    else
+                        Console.WriteLine("This account exists");
+
+                    break;
+            }
+
+        }
     }
 }
